@@ -12,7 +12,7 @@ export const Hero: React.FC = () => {
           </div>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-950 dark:text-white leading-[1.1] mb-6 tracking-tight">
-            The <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-950 to-lime-600 dark:from-lime-400 dark:to-emerald-500">Sky</span> for Your <br className="hidden md:block" /> Digital Universe.
+           Digital <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-950 to-lime-600 dark:from-lime-400 dark:to-emerald-500">Sky</span> for Your <br className="hidden md:block" />Eternal Power
           </h1>
           
           <p className="text-lg md:text-xl text-slate-700 dark:text-slate-400 mb-10 max-w-2xl leading-relaxed font-medium">

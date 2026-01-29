@@ -4,19 +4,19 @@ import { Star } from 'lucide-react';
 export const Testimonials: React.FC = () => {
   const testimonials = [
     {
-      name: "Marcus Thorne",
+      name: "Tenzin Pema",
       role: "CTO, Velocity Gaming",
       avatar: "https://picsum.photos/id/64/100/100",
       content: "Yulwa transformed our infrastructure. We were struggling with latency in Asia, but their edge network cut our ping by 40% overnight. Truly the 'Sky' of digital platforms."
     },
     {
-      name: "Lena Schmidt",
+      name: "Dickey Tsering",
       role: "E-com Founder",
       avatar: "https://picsum.photos/id/65/100/100",
       content: "The support team is phenomenal. I'm not a tech person, but their dashboard made deploying my shop effortless. Best hosting investment I've made in years."
     },
     {
-      name: "Jason Park",
+      name: "Tsering Dorjee",
       role: "Lead Developer",
       avatar: "https://picsum.photos/id/66/100/100",
       content: "The API documentation is first-class. Integrating Yulwa into our CI/CD pipelines was a breeze. We've had 100% uptime for over 14 months now."
