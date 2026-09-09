@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronRight, Sun, Moon } from 'lucide-react';
+import { Logo } from './Logo';
+
 interface HeaderProps {
   isScrolled: boolean;
 }
-
-const BrandLogo: React.FC<{ className?: string }> = ({ className }) => (
-
-<img src="yulwa-logo.svg" alt="" className={className} />
- 
-);
 
 export const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -33,10 +29,8 @@ export const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
 
   const navLinks = [
     { name: 'Services', href: '#services' },
-    { name: 'Solutions', href: '#features' },
+    { name: 'Features', href: '#features' },
     { name: 'Pricing', href: '#pricing' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'Blog', href: '#blog' },
     { name: 'About', href: '#about' },
   ];
 
@@ -48,7 +42,7 @@ export const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
     }`}>
       <div className="container mx-auto px-6 flex items-center justify-between">
         <a href="/" className="flex items-center group">
-          <BrandLogo className="h-8 md:h-10 w-auto text-slate-900 dark:text-white transition-transform group-hover:scale-105" />
+          <Logo className="h-8 md:h-10 w-auto transition-transform group-hover:scale-105" />
         </a>
 
         {/* Desktop Nav */}
@@ -57,7 +51,7 @@ export const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
             <a
               key={link.name}
               href={link.href}
-              className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-lime-500 dark:hover:text-white hover:text-glow transition-colors"
+              className="text-sm font-semibold text-slate-800 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-lime-400 transition-colors"
             >
               {link.name}
             </a>
@@ -67,16 +61,10 @@ export const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
         <div className="hidden md:flex items-center gap-4">
           <button 
             onClick={toggleTheme}
-            className="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10 transition-all"
+            className="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10 transition-all border border-slate-200 dark:border-white/10"
             aria-label="Toggle Theme"
           >
             {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-          </button>
-          <button className="text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white px-4 py-2">
-            Log In
-          </button>
-          <button className="sky-gradient text-black px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-lime-500/20 hover:shadow-lime-500/40 hover:-translate-y-0.5 transition-all flex items-center gap-2">
-            Get Started <ChevronRight className="w-4 h-4" />
           </button>
         </div>
 
@@ -104,16 +92,12 @@ export const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
             <a
               key={link.name}
               href={link.href}
-              className="text-lg font-medium text-slate-600 dark:text-slate-300 hover:text-lime-500"
+              className="text-lg font-medium text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-lime-400"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.name}
             </a>
           ))}
-          <div className="pt-4 flex flex-col gap-3">
-            <button className="w-full text-center py-3 font-semibold text-slate-600 dark:text-slate-300">Log In</button>
-            <button className="w-full sky-gradient py-3 rounded-xl font-bold text-black shadow-lg">Get Started</button>
-          </div>
         </div>
       )}
     </header>

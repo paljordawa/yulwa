@@ -22,14 +22,14 @@ export const AIArchitect: React.FC = () => {
         model: 'gemini-3-flash-preview',
         contents: userMessage,
         config: {
-          systemInstruction: "You are the Yulwa Cloud Architect. Your job is to help users find the perfect hosting or web development solution on the Yulwa.com platform. Yulwa means 'Sky' in Tibetan. Be helpful, professional, and tech-savvy. Recommend specific tiers: Cloud Starter, Sky Pro, or Zenith Enterprise based on their needs.",
+          systemInstruction: "You are the Yulwa Digital Services Advisor. Your job is to guide users on selecting or customizing digital services on Yulwa.com: Professional Website Development, Business Domain Email, SEO Optimization & Keyword Strategy, and NVMe Cloud Hosting. Yulwa means 'Sky' in Tibetan. Be helpful, professional, and business-focused. Recommend packages: Digital Starter, Growth Business, or Enterprise Dominance.",
         },
       });
 
-      const aiResponse = response.text || "I'm sorry, I couldn't process that. Try asking about our Sky Pro plan!";
+      const aiResponse = response.text || "I'm sorry, I couldn't process that. Ask me about our Website, Business Email, or SEO Growth plans!";
       setChatHistory(prev => [...prev, { role: 'ai', text: aiResponse }]);
     } catch (error) {
-      setChatHistory(prev => [...prev, { role: 'ai', text: "High latency in the stratosphere. Please try again soon!" }]);
+      setChatHistory(prev => [...prev, { role: 'ai', text: "Connection error. Please try again soon!" }]);
     } finally {
       setIsTyping(false);
     }
@@ -53,8 +53,8 @@ export const AIArchitect: React.FC = () => {
                 <Cpu className="text-black w-6 h-6" />
               </div>
               <div>
-                <h4 className="text-black font-bold leading-none">Cloud Architect AI</h4>
-                <span className="text-black/60 text-[10px] uppercase font-bold tracking-widest">Powered by Gemini</span>
+                <h4 className="text-black font-bold leading-none">Digital Services Advisor</h4>
+                <span className="text-black/60 text-[10px] uppercase font-bold tracking-widest">Web • Email • SEO • Cloud</span>
               </div>
             </div>
             <button onClick={() => setIsOpen(false)} className="text-black/80 hover:text-black transition-colors">
@@ -65,7 +65,7 @@ export const AIArchitect: React.FC = () => {
           {/* Messages */}
           <div className="flex-grow p-4 overflow-y-auto space-y-4 bg-slate-50 dark:bg-slate-950/50">
             <div className="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/5 p-3 rounded-2xl rounded-tl-none max-w-[85%] shadow-sm">
-              <p className="text-slate-800 dark:text-slate-300 text-sm">Hello! I'm your Yulwa Architect. What kind of project are you launching in our Sky today?</p>
+              <p className="text-slate-800 dark:text-slate-300 text-sm">Hello! I'm your Yulwa Advisor. Need a custom website, business email, SEO growth, or cloud hosting?</p>
             </div>
             {chatHistory.map((chat, idx) => (
               <div 
@@ -83,7 +83,7 @@ export const AIArchitect: React.FC = () => {
             ))}
             {isTyping && (
               <div className="flex justify-start">
-                <div className="bg-white dark:bg-white/5 p-3 rounded-2xl animate-pulse text-slate-500 text-xs shadow-sm">Architect is calculating...</div>
+                <div className="bg-white dark:bg-white/5 p-3 rounded-2xl animate-pulse text-slate-500 text-xs shadow-sm">Advisor is answering...</div>
               </div>
             )}
           </div>
@@ -96,7 +96,7 @@ export const AIArchitect: React.FC = () => {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                placeholder="Ask about hosting..."
+                placeholder="Ask about website, email, or SEO..."
                 className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-white/10 rounded-xl py-3 pl-4 pr-12 text-slate-900 dark:text-white text-sm focus:outline-none focus:border-lime-500 transition-colors"
               />
               <button 

@@ -9,7 +9,6 @@ import { Pricing } from './components/Pricing';
 import { Testimonials } from './components/Testimonials';
 import { ContactCTA } from './components/ContactCTA';
 import { Footer } from './components/Footer';
-import { AIArchitect } from './components/AIArchitect';
 
 const App: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,8 +25,8 @@ const App: React.FC = () => {
     <div className="relative min-h-screen selection:bg-lime-500 selection:text-black">
       {/* Background Elements */}
       <div className="fixed inset-0 bg-grid-white -z-10" />
-      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-lime-500/10 blur-[120px] -z-10 rounded-full" />
-      <div className="fixed bottom-0 right-0 w-[400px] h-[400px] bg-emerald-600/10 blur-[100px] -z-10 rounded-full" />
+      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-emerald-400/10 dark:bg-lime-500/10 blur-[140px] -z-10 rounded-full" />
+      <div className="fixed bottom-0 right-0 w-[400px] h-[400px] bg-teal-500/10 dark:bg-emerald-600/10 blur-[120px] -z-10 rounded-full" />
 
       <Header isScrolled={isScrolled} />
       
@@ -43,9 +42,6 @@ const App: React.FC = () => {
       </main>
 
       <Footer />
-      
-      {/* Interactive AI Widget */}
-      <AIArchitect />
     </div>
   );
 };

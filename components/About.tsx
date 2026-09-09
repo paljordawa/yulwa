@@ -3,10 +3,10 @@ import { Github, Code2, Globe, Cpu, Instagram, Facebook, MessageCircle, External
 
 export const About: React.FC = () => {
   const skills = [
-    { name: 'TypeScript', level: '95%' },
-    { name: 'React / Next.js', level: '90%' },
-    { name: 'Node.js', level: '85%' },
-    { name: 'Cloud Infra', level: '80%' }
+    { name: 'Web Development', level: '96%' },
+    { name: 'SEO & Growth', level: '92%' },
+    { name: 'Email Architecture', level: '95%' },
+    { name: 'Cloud Infrastructure', level: '90%' }
   ];
 
   const socials = [
@@ -22,7 +22,7 @@ export const About: React.FC = () => {
       <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none select-none font-mono text-xs overflow-hidden dark:text-lime-500 hidden lg:block">
         {Array.from({ length: 20 }).map((_, i) => (
           <div key={i} className="whitespace-nowrap mb-1">
-            {`const architect = { name: "Paljor Dawa", role: "Fullstack Engineer", location: "Global", vision: "Yulwa (Sky)" }; architect.deploy(); `.repeat(5)}
+            {`const agency = { name: "Paljor Dawa", role: "Digital Services Architect", services: ["Websites", "Email", "SEO", "Hosting"] }; agency.grow(); `.repeat(4)}
           </div>
         ))}
       </div>
@@ -47,7 +47,7 @@ export const About: React.FC = () => {
                 {/* Status Badge */}
                 <div className="absolute -bottom-4 -right-4 glass-card p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-lime-500/50">
                   <div className="w-3 h-3 bg-lime-500 rounded-full animate-ping" />
-                  <span className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tighter">Available for Scale</span>
+                  <span className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tighter">Available for Projects</span>
                 </div>
               </div>
 
@@ -69,7 +69,7 @@ export const About: React.FC = () => {
                 Meet <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-lime-500">Paljor Dawa</span>
               </h3>
               <p className="text-lg text-slate-700 dark:text-slate-400 leading-relaxed mb-6 font-medium">
-                Passionate Full-stack Developer and founder of Yulwa. With a deep focus on crafting high-performance digital ecosystems, I bridge the gap between complex cloud infrastructure and intuitive user experiences.
+                Digital Engineer & Founder of Yulwa. I specialize in designing professional websites, establishing high-deliverability business email systems, executing rank-boosting SEO strategies, and deploying cloud hosting solutions.
               </p>
               <div className="flex gap-4 mb-8">
                 {socials.map((social, idx) => (

@@ -2,10 +2,10 @@ import React from 'react';
 
 export const Stats: React.FC = () => {
   const stats = [
-    { label: 'Cloud Deployments', value: '1.2M+' },
-    { label: 'Uptime Guarantee', value: '99.9%' },
-    { label: 'Support Response', value: '< 15m' },
-    { label: 'Countries Served', value: '120+' },
+    { label: 'Websites Built', value: '500+' },
+    { label: 'SEO Traffic Growth', value: '180%' },
+    { label: 'Business Emails', value: '10,000+' },
+    { label: 'Cloud Uptime', value: '99.99%' },
   ];
 
   return (

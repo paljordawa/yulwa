@@ -5,21 +5,21 @@ export const Testimonials: React.FC = () => {
   const testimonials = [
     {
       name: "Tenzin Pema",
-      role: "CTO, Velocity Gaming",
+      role: "Founder, Peak Horizon Agency",
       avatar: "https://picsum.photos/id/64/100/100",
-      content: "Yulwa transformed our infrastructure. We were struggling with latency in Asia, but their edge network cut our ping by 40% overnight. Truly the 'Sky' of digital platforms."
+      content: "Yulwa designed our custom business website and set up our corporate email accounts seamlessly. Organic leads tripled within 3 months thanks to their SEO strategy!"
     },
     {
       name: "Dickey Tsering",
-      role: "E-com Founder",
+      role: "E-Commerce Director",
       avatar: "https://picsum.photos/id/65/100/100",
-      content: "The support team is phenomenal. I'm not a tech person, but their dashboard made deploying my shop effortless. Best hosting investment I've made in years."
+      content: "Our online store now loads under half a second on Yulwa's NVMe hosting. Coupled with professional custom domain email, our customer conversion rate skyrocketed."
     },
     {
       name: "Tsering Dorjee",
-      role: "Lead Developer",
+      role: "Operations Director",
       avatar: "https://picsum.photos/id/66/100/100",
-      content: "The API documentation is first-class. Integrating Yulwa into our CI/CD pipelines was a breeze. We've had 100% uptime for over 14 months now."
+      content: "From domain email migration to getting us ranked on Page #1 for competitive keywords, Yulwa is the most comprehensive digital partner we've ever worked with."
     }
   ];
 

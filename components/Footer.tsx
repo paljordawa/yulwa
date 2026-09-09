@@ -1,9 +1,6 @@
 import React from 'react';
 import { Github, Linkedin, MessageCircle, Instagram, Facebook } from 'lucide-react';
-
-const BrandLogo: React.FC<{ className?: string }> = ({ className }) => (
-<img src="yulwa-logo.svg" alt="" className={className} />
-);
+import { Logo } from './Logo';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -22,9 +19,9 @@ export const Footer: React.FC = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           <div className="lg:col-span-2">
             <div className="mb-8">
-              <BrandLogo className="h-12 w-auto text-slate-900 dark:text-white mb-6" />
+              <Logo className="h-12 w-auto mb-6" />
               <p className="text-slate-600 dark:text-slate-500 max-w-sm leading-relaxed">
-                The high-performance hosting platform designed for the next generation of digital infrastructure.
+                Full-suite digital services provider offering custom website development, business email hosting, SEO optimization, and cloud infrastructure.
               </p>
             </div>
             <div className="flex flex-wrap gap-4">
@@ -44,12 +41,12 @@ export const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h5 className="text-slate-900 dark:text-white font-bold mb-6">Platform</h5>
+            <h5 className="text-slate-900 dark:text-white font-bold mb-6">Services</h5>
             <ul className="space-y-4 text-slate-600 dark:text-slate-500 text-sm">
-              <li><a href="#" className="hover:text-lime-500">Cloud Hosting</a></li>
-              <li><a href="#" className="hover:text-lime-500">Dedicated Servers</a></li>
-              <li><a href="#" className="hover:text-lime-500">Managed DB</a></li>
-              <li><a href="#" className="hover:text-lime-500">Security Suite</a></li>
+              <li><a href="#services" className="hover:text-lime-500">Website Development</a></li>
+              <li><a href="#services" className="hover:text-lime-500">Business Email Hosting</a></li>
+              <li><a href="#services" className="hover:text-lime-500">SEO Optimization</a></li>
+              <li><a href="#services" className="hover:text-lime-500">Cloud Web Hosting</a></li>
             </ul>
           </div>
 
