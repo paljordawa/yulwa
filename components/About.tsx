@@ -1,12 +1,19 @@
-import React from 'react';
-import { Github, Code2, Globe, Cpu, Instagram, Facebook, MessageCircle, ExternalLink } from 'lucide-react';
+import React, { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { Github, Code2, Globe, Cpu, Instagram, Facebook, MessageCircle, ExternalLink, Terminal, Box, Palette } from 'lucide-react';
+import { TibetanCloud } from './TibetanCloud';
 
 export const About: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const skills = [
-    { name: 'Web Development', level: '96%' },
-    { name: 'SEO & Growth', level: '92%' },
-    { name: 'Email Architecture', level: '95%' },
-    { name: 'Cloud Infrastructure', level: '90%' }
+    { name: 'React / Next.js Web Dev', level: '98%' },
+    { name: 'Blender 3D Concept Art', level: '95%' },
+    { name: 'Graphic & Brand Design', level: '94%' },
+    { name: 'Technical SEO', level: '95%' },
+    { name: 'Business Email Auth', level: '96%' },
+    { name: 'NVMe Cloud Infrastructure', level: '94%' }
   ];
 
   const socials = [
@@ -16,69 +23,122 @@ export const About: React.FC = () => {
     { icon: <Github className="w-5 h-5" />, href: "https://github.com/paljordawa", label: "GitHub" }
   ];
 
+  useGSAP(() => {
+    if (!containerRef.current) return;
+
+    gsap.fromTo(
+      '.about-visual',
+      { opacity: 0, scale: 0.9 },
+      { opacity: 1, scale: 1, duration: 0.8, ease: 'back.out(1.4)' }
+    );
+
+    gsap.fromTo(
+      '.about-content',
+      { opacity: 0, x: 30 },
+      { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out' }
+    );
+
+    gsap.fromTo(
+      '.skill-bar-fill',
+      { width: '0%' },
+      {
+        width: (i, target) => target.dataset.level,
+        duration: 1.2,
+        stagger: 0.15,
+        ease: 'power2.out'
+      }
+    );
+    gsap.to('.badge-float-1', {
+      y: -10,
+      rotate: 18,
+      duration: 2.8,
+      repeat: -1,
+      yoyo: true,
+      ease: 'sine.inOut'
+    });
+
+    gsap.to('.badge-float-2', {
+      y: 10,
+      rotate: -18,
+      duration: 3.2,
+      repeat: -1,
+      yoyo: true,
+      ease: 'sine.inOut'
+    });
+  }, { scope: containerRef });
+
   return (
-    <section id="about" className="py-24 relative overflow-hidden bg-slate-50 dark:bg-slate-900/10">
-      {/* Background Code Pattern Decorator */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none select-none font-mono text-xs overflow-hidden dark:text-lime-500 hidden lg:block">
+    <section id="about" ref={containerRef} className="py-24 relative overflow-hidden bg-[#030712] border-b border-indigo-500/10">
+      {/* Background Code Watermark */}
+      <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none select-none font-mono text-xs overflow-hidden text-indigo-400 hidden lg:block">
         {Array.from({ length: 20 }).map((_, i) => (
           <div key={i} className="whitespace-nowrap mb-1">
-            {`const agency = { name: "Paljor Dawa", role: "Digital Services Architect", services: ["Websites", "Email", "SEO", "Hosting"] }; agency.grow(); `.repeat(4)}
+            {`const architect = { name: "Paljor Dawa", agency: "Yulwa Digital", stack: ["React", "Blender 3D", "Photoshop", "Next.js", "SEO"] }; architect.build(); `.repeat(4)}
           </div>
         ))}
       </div>
 
+      {/* Tibetan Cloud Background Decorator */}
+      <div className="absolute -bottom-10 right-0 opacity-15 pointer-events-none">
+        <TibetanCloud variant="cluster" className="w-96 h-96 text-indigo-500" />
+      </div>
+
       <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-16">
+        <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Profile Visual */}
-          <div className="w-full lg:w-1/2 flex justify-center">
+          <div className="about-visual w-full lg:w-1/2 flex justify-center">
             <div className="relative">
-              {/* Outer Glowing Ring */}
-              <div className="absolute inset-0 sky-gradient blur-3xl opacity-20 animate-pulse rounded-full" />
+              {/* Outer Glowing Mesh */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-indigo-600 to-purple-600 blur-3xl opacity-30 animate-pulse rounded-full" />
               
-              <div className="relative p-2 rounded-[40px] border-2 border-lime-500/30 bg-white dark:bg-slate-950 shadow-2xl">
-                <div className="w-64 h-64 md:w-80 md:h-80 rounded-[32px] overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+              <div className="relative p-2 rounded-3xl border border-indigo-500/30 bg-[#0b0f19] shadow-2xl shadow-indigo-950/50">
+                <div className="w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden relative">
                   <img 
                     src="https://github.com/paljordawa.png" 
                     alt="Paljor Dawa"
-                    className="w-full h-full object-cover scale-110 hover:scale-100 transition-transform duration-700"
+                    className="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-700"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f19]/80 via-transparent to-transparent" />
                 </div>
                 
                 {/* Status Badge */}
-                <div className="absolute -bottom-4 -right-4 glass-card p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-lime-500/50">
-                  <div className="w-3 h-3 bg-lime-500 rounded-full animate-ping" />
-                  <span className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tighter">Available for Projects</span>
+                <div className="absolute -bottom-3 -right-3 tech-card px-3.5 py-2 rounded-lg shadow-xl flex items-center gap-2 border border-indigo-500/30 bg-[#0b0f19]/90">
+                  <div className="w-2 h-2 bg-emerald-400 rounded-full animate-ping" />
+                  <span className="text-[10px] font-mono font-bold text-white uppercase tracking-wider">AVAILABLE FOR HIRE</span>
                 </div>
               </div>
 
-              {/* Decorative Icons */}
-              <div className="absolute -top-6 -left-6 w-12 h-12 sky-gradient rounded-xl flex items-center justify-center text-black shadow-lg shadow-lime-500/20 rotate-12">
-                <Code2 className="w-6 h-6" />
+              {/* Decorative Floating Badges */}
+              <div className="badge-float-1 absolute -top-4 -left-4 w-10 h-10 tech-bg-gradient rounded-lg flex items-center justify-center text-white shadow-lg shadow-indigo-500/30 rotate-12 border border-indigo-400/40">
+                <Box className="w-5 h-5" />
               </div>
-              <div className="absolute bottom-12 -left-10 w-10 h-10 glass-card rounded-lg flex items-center justify-center text-lime-600 dark:text-lime-400 -rotate-12 border border-lime-500/20">
-                <Cpu className="w-5 h-5" />
+              <div className="badge-float-2 absolute bottom-10 -left-6 w-9 h-9 tech-card rounded-lg flex items-center justify-center text-indigo-400 -rotate-12 border border-indigo-500/30 bg-[#0b0f19]">
+                <Palette className="w-4 h-4" />
               </div>
             </div>
           </div>
 
           {/* Bio & Skills */}
-          <div className="w-full lg:w-1/2">
-            <div className="mb-8">
-              <h2 className="text-lime-600 dark:text-lime-400 font-bold uppercase tracking-widest text-sm mb-4">The Architect</h2>
-              <h3 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white leading-tight mb-6">
-                Meet <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-lime-500">Paljor Dawa</span>
+          <div className="about-content w-full lg:w-1/2">
+            <div className="mb-6 relative">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-950/60 border border-indigo-500/30 text-indigo-300 text-xs font-mono font-medium tracking-wide mb-3">
+                <Terminal className="w-3.5 h-3.5 text-indigo-400" />
+                <span>ABOUT THE FOUNDER</span>
+              </div>
+              <h3 className="text-3xl md:text-4xl font-black text-white leading-tight mb-4 tracking-tight">
+                Meet <span className="tech-gradient-text">Paljor Dawa</span>
               </h3>
-              <p className="text-lg text-slate-700 dark:text-slate-400 leading-relaxed mb-6 font-medium">
-                Digital Engineer & Founder of Yulwa. I specialize in designing professional websites, establishing high-deliverability business email systems, executing rank-boosting SEO strategies, and deploying cloud hosting solutions.
+              <p className="text-slate-300 text-sm leading-relaxed mb-6 font-normal">
+                Developer, 3D Artist & Founder of Yulwa Digital. Specialized in building React web applications, Blender 3D concept art, brand visual design, business email setups, and technical SEO.
               </p>
-              <div className="flex gap-4 mb-8">
+              <div className="flex gap-3 mb-6">
                 {socials.map((social, idx) => (
                   <a 
                     key={idx}
                     href={social.href} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-xl bg-slate-200 dark:bg-white/5 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-black hover:sky-gradient transition-all shadow-sm"
+                    className="w-9 h-9 rounded-lg bg-slate-900/80 flex items-center justify-center text-slate-300 hover:text-white hover:border-indigo-500 hover:bg-indigo-600/20 transition-all border border-indigo-500/20"
                     title={social.label}
                   >
                     {social.icon}
@@ -87,36 +147,40 @@ export const About: React.FC = () => {
               </div>
             </div>
 
-            {/* Tech Stack */}
-            <div className="grid grid-cols-2 gap-4 mb-10">
+            {/* Skills */}
+            <div className="grid grid-cols-2 gap-3 mb-8">
               {skills.map((skill) => (
-                <div key={skill.name} className="glass-card p-4 rounded-2xl border-slate-200 dark:border-white/5">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">{skill.name}</span>
-                    <span className="text-[10px] text-lime-600 dark:text-lime-400 font-black">{skill.level}</span>
+                <div key={skill.name} className="tech-card p-3 rounded-lg border-indigo-500/20 bg-[#0b0f19]/80">
+                  <div className="flex justify-between items-center mb-1.5">
+                    <span className="text-xs font-medium text-slate-200 tracking-wide">{skill.name}</span>
+                    <span className="text-[10px] font-mono text-cyan-400 font-bold">{skill.level}</span>
                   </div>
-                  <div className="h-1 w-full bg-slate-200 dark:bg-white/10 rounded-full overflow-hidden">
+                  <div className="h-1 w-full bg-slate-800 rounded-full overflow-hidden">
                     <div 
-                      className="h-full sky-gradient" 
-                      style={{ width: skill.level }}
+                      className="skill-bar-fill h-full tech-bg-gradient" 
+                      data-level={skill.level}
+                      style={{ width: '0%' }}
                     />
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-3">
               <a 
                 href="https://github.com/paljordawa" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="sky-gradient text-black px-8 py-4 rounded-2xl font-bold flex items-center gap-2 hover:scale-105 transition-all shadow-lg shadow-lime-500/20"
+                className="tech-bg-gradient text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-2 hover:scale-105 transition-all shadow-md shadow-indigo-500/25 border border-indigo-400/40"
               >
-                <Github className="w-5 h-5" /> Follow on GitHub
+                <Github className="w-4 h-4" /> GITHUB PROFILE
               </a>
-              <button className="glass-card px-8 py-4 rounded-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2 hover:bg-slate-200 dark:hover:bg-white/10 transition-all border border-slate-200 dark:border-white/10">
-                <Globe className="w-5 h-5" /> Portfolio <ExternalLink className="w-4 h-4 opacity-50" />
-              </button>
+              <a 
+                href="#portfolio"
+                className="tech-card px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider text-white flex items-center gap-2 hover:bg-indigo-950/40 transition-all border border-indigo-500/30 bg-[#0b0f19]"
+              >
+                <Globe className="w-4 h-4 text-cyan-400" /> PORTFOLIO <ExternalLink className="w-3.5 h-3.5 opacity-50" />
+              </a>
             </div>
           </div>
         </div>

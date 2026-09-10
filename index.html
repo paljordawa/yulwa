@@ -3,8 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Yulwa offers professional website development, business email hosting, SEO optimization, and high-performance cloud hosting services.">
-    <title>Yulwa | Professional Website Development, Business Email & SEO Optimization</title>
+    <meta name="description" content="Yulwa offers high-performance website and web application development, custom React & Next.js platforms, web administration, high-speed cloud hosting, and Blender 3D concept design.">
+    <meta name="keywords" content="Yulwa, website development, web application development, web administration, cloud hosting, React web apps, rolyang.app, nomad cuisine, Tibetan calendar app, Blender 3D artwork, graphic design">
+    <meta name="author" content="Yulwa">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#030712">
+    <link rel="canonical" href="https://yulwa.com/">
+
+    <title>Yulwa | Website & Web Application Development, Web Administration & Cloud Services</title>
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yulwa.com/">
+    <meta property="og:title" content="Yulwa | Website & Web Application Development">
+    <meta property="og:description" content="High-performance custom web development, React web applications, web administration, NVMe cloud hosting, Blender 3D concept art, and visual identity.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=1200&h=630&q=80">
+    <meta property="og:site_name" content="Yulwa">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Yulwa | Website & Web Application Development">
+    <meta name="twitter:description" content="High-performance custom web development, web application engineering, web administration & cloud services.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=1200&h=630&q=80">
+
+    <!-- Structured Data JSON-LD Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://yulwa.com/#website",
+          "url": "https://yulwa.com/",
+          "name": "Yulwa",
+          "description": "High-performance website and web application development, web administration, and cloud services.",
+          "publisher": {
+            "@id": "https://yulwa.com/#organization"
+          }
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://yulwa.com/#organization",
+          "name": "Yulwa",
+          "url": "https://yulwa.com/",
+          "logo": "https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=600&q=80",
+          "description": "Custom web application engineering, website development, web administration, managed server hosting, Blender 3D design, and graphic design.",
+          "sameAs": [
+            "https://github.com/paljordawa",
+            "https://rolyang.app",
+            "https://nomad-cuisine.ch/",
+            "https://calendar-opal-five.vercel.app/"
+          ],
+          "knowsAbout": [
+            "Website Development",
+            "Web Application Engineering",
+            "Web Administration & Server Maintenance",
+            "NVMe Cloud Hosting",
+            "Blender 3D Artwork",
+            "Graphic Design & Brand Systems"
+          ],
+          "priceRange": "$$"
+        }
+      ]
+    }
+    </script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-14MFN7ES34"></script>
@@ -24,7 +86,8 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         // Check for saved theme or system preference
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -36,55 +99,49 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Light mode default */
-            color: #0f172a;
+            background-color: #030712; /* High-tech deep dark slate */
+            color: #f8fafc;
             overflow-x: hidden;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
-        .dark body {
-            background-color: #020617; /* Dark mode default */
-            color: #f8fafc;
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
-        .glass-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.04), 0 4px 6px -2px rgba(15, 23, 42, 0.02);
-            transition: all 0.3s ease;
+        .tech-gradient-text {
+            background: linear-gradient(135deg, #49b748 0%, #34d399 50%, #2dd4bf 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .dark .glass-card {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(12px);
+        .tech-bg-gradient {
+            background: linear-gradient(135deg, #16a34a 0%, #49b748 50%, #0d9488 100%);
+        }
+        .tech-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: none;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .text-glow {
-            text-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+        .tech-card:hover {
+            border-color: rgba(73, 183, 72, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 25px 60px rgba(73, 183, 72, 0.15);
         }
-        .dark .text-glow {
-            text-shadow: 0 0 20px rgba(163, 230, 53, 0.5);
+        .tech-glow-mesh {
+            background: radial-gradient(circle at 50% 15%, rgba(73, 183, 72, 0.18), rgba(20, 184, 166, 0.12), rgba(16, 185, 129, 0.08), transparent 70%);
         }
-        .bg-grid-white {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgba(15,23,42,0.04)'%3E%3Cpath d='M0 .5H31.5V32'/%3E%3C/svg%3E");
+        .bg-grid-tech {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgba(255,255,255,0.04)'%3E%3Cpath d='M0 .5H31.5V32'/%3E%3C/svg%3E");
         }
-        .dark .bg-grid-white {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgba(255,255,255,0.03)'%3E%3Cpath d='M0 .5H31.5V32'/%3E%3C/svg%3E");
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.04); }
         }
-        .sky-gradient {
-            background: linear-gradient(135deg, #84cc16 0%, #10b981 100%);
-        }
-        .dark .sky-gradient {
-            background: linear-gradient(135deg, #a3e635 0%, #10b981 100%);
-        }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-12px); }
-            100% { transform: translateY(0px); }
-        }
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
+        .animate-tech-pulse {
+            animation: pulseGlow 6s ease-in-out infinite;
         }
     </style>
 <script type="importmap">
@@ -92,6 +149,9 @@
   "imports": {
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "framer-motion": "https://esm.sh/framer-motion@^12.4.10",
+    "gsap": "https://esm.sh/gsap@3.15.0",
+    "@gsap/react": "https://esm.sh/@gsap/react@2.1.2",
     "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
     "react/": "https://esm.sh/react@^19.2.3/",
     "react": "https://esm.sh/react@^19.2.3"

@@ -29,3 +29,13 @@ export interface TestimonialProps {
   content: string;
   avatar: string;
 }
+
+export interface ProjectProps {
+  title: string;
+  category: string;
+  description: string;
+  image: string;
+  tags: string[];
+  metrics: string;
+  link: string;
+}

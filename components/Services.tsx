@@ -1,85 +1,162 @@
-import React from 'react';
-import { Layout, Mail, TrendingUp, Server, CheckCircle2 } from 'lucide-react';
+import React, { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { Layout, Mail, TrendingUp, Server, CheckCircle2, ArrowUpRight, Cpu, Box, Palette } from 'lucide-react';
+import { TibetanCloud } from './TibetanCloud';
 
 export const Services: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
   const services = [
     {
-      title: 'Professional Website Development',
-      category: 'Web Design & Engineering',
-      description: 'Bespoke, high-converting websites and modern web applications engineered with React, Next.js, and WordPress. Responsive, lightning-fast, and custom-tailored to your brand.',
-      icon: <Layout className="w-10 h-10 text-black" />,
-      features: ['Custom UI/UX Design', 'Mobile & Desktop Responsive', 'Fast Loading & Mobile Optimized', 'E-Commerce & CMS Integration'],
-      image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=800&q=80'
+      index: '01',
+      title: 'Website & Web Development',
+      category: 'Web Dev & Admin',
+      description: 'High-performing custom websites, React & Next.js web applications, and complete web administration & maintenance.',
+      icon: <Layout className="w-6 h-6 text-white" />,
+      features: ['Custom Website Design', 'React Web Applications', 'Web Administration & Care', 'CMS & Server Maintenance'],
+      image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=800&q=80',
+      bentoCol: 'col-span-1 lg:col-span-2'
     },
     {
+      index: '02',
+      title: 'Blender 3D & Graphic Design',
+      category: '3D & Graphics',
+      description: 'Photorealistic 3D environment renders, Blender concept modeling, vector logos, and brand identity systems.',
+      icon: <Box className="w-6 h-6 text-white" />,
+      features: ['3D Environment Concepts', 'Cycles Renders', 'Vector Graphics & Logos', 'Brand Visual Systems'],
+      image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
+      bentoCol: 'col-span-1'
+    },
+    {
+      index: '03',
       title: 'Business Email Solutions',
-      category: 'Professional Branding',
-      description: 'Build instant trust with custom @yourdomain.com professional email addresses. Complete with SPF/DKIM authentication, zero-spam filters, and 100% sync across all your devices.',
-      icon: <Mail className="w-10 h-10 text-black" />,
-      features: ['Custom Domain Mailboxes', 'Anti-Spam & Virus Defense', 'Mobile & Desktop Sync', 'Team & Shared Inboxes'],
-      image: 'https://images.unsplash.com/photo-1596526131083-e8c633c948d2?auto=format&fit=crop&w=800&q=80'
+      category: 'Email',
+      description: 'Custom @yourdomain.com mailboxes configured with SPF/DKIM authentication and zero spam.',
+      icon: <Mail className="w-6 h-6 text-white" />,
+      features: ['Custom Domain Mail', 'SPF/DKIM/DMARC Security', 'Device Syncing', 'Team Mailboxes'],
+      image: 'https://images.unsplash.com/photo-1596526131083-e8c633c948d2?auto=format&fit=crop&w=800&q=80',
+      bentoCol: 'col-span-1'
     },
     {
-      title: 'SEO Optimization & Growth',
-      category: 'Search Engine Marketing',
-      description: 'Dominating search engine rankings to drive organic traffic and qualified business leads. Comprehensive technical SEO, keyword strategy, speed optimization, and local GMB rankings.',
-      icon: <TrendingUp className="w-10 h-10 text-black" />,
-      features: ['Keyword & Competitor Analysis', 'On-Page & Technical SEO Audits', 'Local SEO & Google Business', 'Monthly Traffic & Ranking Reports'],
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80'
+      index: '04',
+      title: 'SEO Optimization & Ranking',
+      category: 'SEO',
+      description: 'Technical on-page SEO and local Google profile optimization to rank higher on search engines.',
+      icon: <TrendingUp className="w-6 h-6 text-white" />,
+      features: ['Technical SEO Audits', 'Keyword Strategy', 'Google Business Setup', 'Ranking Tracking'],
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+      bentoCol: 'col-span-1'
     },
     {
-      title: 'High-Speed Web Hosting',
-      category: 'Cloud Infrastructure',
-      description: 'Enterprise-grade NVMe cloud web hosting built for 99.99% uptime. Managed cloud servers, free SSL certificates, automated daily backups, and 24/7 expert maintenance.',
-      icon: <Server className="w-10 h-10 text-black" />,
-      features: ['Ultra-Fast NVMe SSD Storage', 'Free SSL Certificates', 'Automated Daily Backups', '24/7 Managed Server Support'],
-      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80'
+      index: '05',
+      title: 'High-Speed Cloud Hosting',
+      category: 'Hosting & Admin',
+      description: 'NVMe cloud hosting with 99.99% uptime guarantees, web administration, SSL, and automated backups.',
+      icon: <Server className="w-6 h-6 text-white" />,
+      features: ['NVMe Storage', 'Free SSL Security', 'Web & Server Administration', '24/7 Managed Server Care'],
+      image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80',
+      bentoCol: 'col-span-1 lg:col-span-1'
     }
   ];
 
+  const cloudRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    if (cardsRef.current) {
+      gsap.fromTo(
+        cardsRef.current.children,
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: 'power3.out'
+        }
+      );
+    }
+
+    if (cloudRef.current) {
+      gsap.to(cloudRef.current, {
+        y: -15,
+        rotate: 2,
+        duration: 4,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+      });
+    }
+  }, { scope: containerRef });
+
   return (
-    <section id="services" className="py-24 bg-slate-100/50 dark:bg-slate-950/50">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-16">
-          <div className="max-w-2xl">
-            <h2 className="text-lime-600 dark:text-lime-400 font-bold uppercase tracking-widest text-sm mb-4">Our Services</h2>
-            <h3 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white leading-tight">
-              All-in-one digital solutions to launch, scale & grow online.
-            </h3>
+    <section ref={containerRef} id="services" className="py-24 relative overflow-hidden bg-[#030712] text-white border-b border-white/10">
+      {/* Ambient green background glow */}
+      <div className="absolute top-1/2 right-0 w-[550px] h-[550px] bg-emerald-500/10 blur-[150px] rounded-full pointer-events-none -z-0" />
+
+      {/* Tibetan Cloud Accent */}
+      <div ref={cloudRef} className="absolute top-10 right-0 opacity-15 pointer-events-none -z-0">
+        <TibetanCloud variant="cluster" className="w-96 h-96 text-emerald-400" />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-12 border-b border-white/10 pb-6">
+          <div className="max-w-xl relative">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 text-xs font-mono font-medium tracking-wide mb-3">
+              <Cpu className="w-3.5 h-3.5 text-emerald-400" />
+              <span>SERVICES</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight">
+              Services & <span className="tech-gradient-text">Capabilities</span>
+            </h2>
           </div>
-          <a href="#pricing" className="px-8 py-4 border border-slate-300 dark:border-white/10 rounded-2xl font-bold text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-white/5 transition-all text-center">
-            View Service Packages
+          <a 
+            href="#pricing" 
+            className="px-5 py-2.5 bg-[#0b0f19] border border-white/15 rounded-full text-xs font-bold text-slate-200 hover:border-emerald-500/50 transition-all backdrop-blur-xl shrink-0 uppercase tracking-wider"
+          >
+            PRICING & PACKAGES
           </a>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-10">
+        {/* Bento Grid */}
+        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, idx) => (
-            <div key={idx} className="group relative rounded-[40px] overflow-hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 flex flex-col justify-between shadow-xl">
-              <div className="h-48 overflow-hidden relative">
+            <div 
+              key={idx}
+              className={`group tech-card rounded-2xl overflow-hidden bg-[#090d16] border border-white/10 flex flex-col justify-between shadow-xl hover:border-indigo-500/50 transition-all duration-300 ${service.bentoCol}`}
+            >
+              <div className="h-48 overflow-hidden relative border-b border-white/10">
                 <img 
                   src={service.image} 
                   alt={service.title}
-                  className="w-full h-full object-cover grayscale opacity-70 group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                  className="w-full h-full object-cover opacity-45 group-hover:scale-105 group-hover:opacity-75 transition-all duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-slate-900 via-transparent to-transparent" />
-                <div className="absolute top-6 left-6 w-16 h-16 sky-gradient rounded-2xl flex items-center justify-center shadow-xl shadow-lime-500/30">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#090d16] via-[#090d16]/60 to-transparent" />
+                
+                {/* Badge Top Left */}
+                <div className="absolute top-4 left-4 font-mono text-[11px] font-bold text-indigo-300 bg-black/70 backdrop-blur-md px-3 py-1 rounded-md border border-white/15">
+                  {service.category}
+                </div>
+
+                <div className="absolute bottom-3 left-5 w-10 h-10 tech-bg-gradient rounded-lg flex items-center justify-center shadow-lg">
                   {service.icon}
                 </div>
               </div>
               
-              <div className="p-8 sm:p-10 flex-grow flex flex-col justify-between">
+              <div className="p-6 flex-grow flex flex-col justify-between">
                 <div>
-                  <span className="text-lime-600 dark:text-lime-400 font-bold uppercase tracking-[0.2em] text-xs mb-2 block">{service.category}</span>
-                  <h4 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white mb-4">{service.title}</h4>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                  <h3 className="text-xl font-bold text-white mb-2 tracking-tight group-hover:text-indigo-300 transition-colors">{service.title}</h3>
+                  <p className="text-slate-300 text-xs leading-relaxed mb-4 font-normal">
                     {service.description}
                   </p>
                 </div>
 
-                <div className="pt-6 border-t border-slate-200 dark:border-white/10 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="pt-4 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {service.features.map((feature, fIdx) => (
-                    <div key={fIdx} className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0" />
+                    <div key={fIdx} className="flex items-center gap-2 text-xs text-slate-300">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-indigo-400 shrink-0" />
                       <span>{feature}</span>
                     </div>
                   ))}
@@ -92,3 +169,4 @@ export const Services: React.FC = () => {
     </section>
   );
 };
+

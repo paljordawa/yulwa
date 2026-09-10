@@ -1,130 +1,184 @@
-import React from 'react';
-import { Globe, Mail, TrendingUp, Server, ArrowRight, Sparkles, CheckCircle2, ShieldCheck, Zap, BarChart3, Lock } from 'lucide-react';
+import React, { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { Globe, Mail, TrendingUp, Server, ArrowRight, Sparkles, CheckCircle2, ShieldCheck, Zap, Terminal, Code2, Lock, ChevronRight, Play, TerminalSquare } from 'lucide-react';
+import { TibetanCloud } from './TibetanCloud';
 
 export const Hero: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const descRef = useRef<HTMLParagraphElement>(null);
+  const buttonsRef = useRef<HTMLDivElement>(null);
+  const terminalRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+    tl.fromTo(headingRef.current, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8 })
+      .fromTo(descRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7 }, '-=0.5')
+      .fromTo(buttonsRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 }, '-=0.4')
+      .fromTo(terminalRef.current, { opacity: 0, y: 45, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 1.0 }, '-=0.5');
+
+    // Continuous floating levitation on terminal
+    if (terminalRef.current) {
+      gsap.to(terminalRef.current, {
+        y: -12,
+        duration: 3.5,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+        delay: 1.2
+      });
+    }
+
+    // Mouse Move Parallax Tilt Interaction
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!containerRef.current || !terminalRef.current) return;
+      const { left, top, width, height } = containerRef.current.getBoundingClientRect();
+      const x = (e.clientX - left - width / 2) / (width / 2);
+      const y = (e.clientY - top - height / 2) / (height / 2);
+
+      gsap.to(terminalRef.current, {
+        rotateY: x * 6,
+        rotateX: -y * 6,
+        duration: 0.8,
+        ease: 'power2.out',
+        transformPerspective: 1000
+      });
+    };
+
+    const handleMouseLeave = () => {
+      if (!terminalRef.current) return;
+      gsap.to(terminalRef.current, {
+        rotateY: 0,
+        rotateX: 0,
+        duration: 1,
+        ease: 'power2.out'
+      });
+    };
+
+    const containerEl = containerRef.current;
+    if (containerEl) {
+      containerEl.addEventListener('mousemove', handleMouseMove);
+      containerEl.addEventListener('mouseleave', handleMouseLeave);
+    }
+
+    return () => {
+      if (containerEl) {
+        containerEl.removeEventListener('mousemove', handleMouseMove);
+        containerEl.removeEventListener('mouseleave', handleMouseLeave);
+      }
+    };
+  }, { scope: containerRef });
+
   return (
-    <section className="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 dark:bg-emerald-500/10 border border-emerald-300/80 dark:border-emerald-500/20 text-emerald-900 dark:text-lime-400 text-xs font-bold uppercase tracking-widest mb-8 shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-emerald-700 dark:text-lime-400" />
-            Full-Suite Digital Agency & Cloud Partner
-          </div>
-          
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-900 dark:text-white leading-[1.1] mb-6 tracking-tight">
-            Websites, <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-teal-700 to-emerald-600 dark:from-lime-400 dark:via-emerald-400 dark:to-teal-300">Email & SEO</span> Built to Skyrocket Your Brand
-          </h1>
-          
-          <p className="text-lg md:text-xl text-slate-700 dark:text-slate-300 mb-10 max-w-3xl leading-relaxed font-semibold">
-            Yulwa powers modern businesses with bespoke web development, branded corporate email hosting, Page #1 SEO optimization, and high-speed NVMe cloud servers.
-          </p>
+    <section ref={containerRef} className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-[#030712] text-white bg-grid-tech border-b border-white/10">
+      {/* High-Tech Glowing Orbs */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[500px] bg-emerald-500/15 blur-[150px] rounded-full pointer-events-none -z-10 animate-tech-pulse" />
+      <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] bg-teal-500/10 blur-[120px] rounded-full pointer-events-none -z-10" />
 
-          <div className="flex flex-col sm:flex-row items-center gap-5 w-full sm:w-auto">
-            <a href="#services" className="w-full sm:w-auto sky-gradient text-slate-950 font-extrabold px-10 py-5 rounded-2xl text-lg shadow-xl shadow-emerald-500/25 hover:scale-105 transition-all flex items-center justify-center gap-3">
-              Explore Digital Services <ArrowRight className="w-5 h-5" />
-            </a>
-            <a href="#pricing" className="w-full sm:w-auto bg-white dark:bg-slate-900 text-slate-900 dark:text-white px-10 py-5 rounded-2xl text-lg font-bold hover:bg-slate-50 dark:hover:bg-slate-800 transition-all flex items-center justify-center gap-3 border border-slate-200 dark:border-white/10 shadow-md">
-              View Growth Bundles
-            </a>
-          </div>
-
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 w-full max-w-4xl">
-             <div className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-md p-4 rounded-2xl border border-slate-200/80 dark:border-white/10 shadow-sm flex items-center justify-center gap-2.5 text-slate-900 dark:text-white font-bold text-sm sm:text-base">
-               <Globe className="w-5 h-5 text-emerald-600 dark:text-lime-400 shrink-0" /> Web Design
-             </div>
-             <div className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-md p-4 rounded-2xl border border-slate-200/80 dark:border-white/10 shadow-sm flex items-center justify-center gap-2.5 text-slate-900 dark:text-white font-bold text-sm sm:text-base">
-               <Mail className="w-5 h-5 text-emerald-600 dark:text-lime-400 shrink-0" /> Business Email
-             </div>
-             <div className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-md p-4 rounded-2xl border border-slate-200/80 dark:border-white/10 shadow-sm flex items-center justify-center gap-2.5 text-slate-900 dark:text-white font-bold text-sm sm:text-base">
-               <TrendingUp className="w-5 h-5 text-emerald-600 dark:text-lime-400 shrink-0" /> SEO Ranking
-             </div>
-             <div className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-md p-4 rounded-2xl border border-slate-200/80 dark:border-white/10 shadow-sm flex items-center justify-center gap-2.5 text-slate-900 dark:text-white font-bold text-sm sm:text-base">
-               <Server className="w-5 h-5 text-emerald-600 dark:text-lime-400 shrink-0" /> NVMe Hosting
-             </div>
-          </div>
-        </div>
+      {/* Tibetan Cloud Artwork Framing */}
+      <div className="absolute top-12 left-1/2 -translate-x-1/2 w-full max-w-6xl h-auto opacity-15 pointer-events-none select-none -z-0">
+        <TibetanCloud variant="hero" className="w-full h-auto text-emerald-400" />
       </div>
 
-      {/* Modern Platform Dashboard Visual */}
-      <div className="mt-16 relative max-w-6xl mx-auto px-6">
-        <div className="relative rounded-3xl overflow-hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-2xl shadow-slate-300/50 dark:shadow-lime-500/10 animate-float p-6 sm:p-8">
-          {/* Top Window Bar */}
-          <div className="flex items-center justify-between pb-6 mb-6 border-b border-slate-100 dark:border-white/10">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-red-400" />
-              <div className="w-3 h-3 rounded-full bg-amber-400" />
-              <div className="w-3 h-3 rounded-full bg-emerald-400" />
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          
+          {/* Hero Content Left (7 Cols) */}
+          <div className="lg:col-span-7">
+            
+            {/* Main Headline */}
+            <h1 
+              ref={headingRef}
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.08] tracking-tight mb-6"
+            >
+              Full-Stack Web & <br />
+              <span className="tech-gradient-text">Web Application</span> Specialist.
+            </h1>
+
+            {/* Sub-heading */}
+            <p 
+              ref={descRef}
+              className="text-base md:text-lg text-slate-300 max-w-xl font-normal leading-relaxed mb-8 border-l-2 border-emerald-500/60 pl-4"
+            >
+              Building high-performing websites, modern React & Next.js web applications, Blender 3D artwork, and 24/7 web administration.
+            </p>
+
+            {/* CTA Buttons */}
+            <div 
+              ref={buttonsRef}
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-10"
+            >
+              <a 
+                href="#contact" 
+                className="tech-bg-gradient text-white text-xs font-bold uppercase tracking-wider px-8 py-3.5 rounded-full shadow-lg shadow-emerald-600/30 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-2 border border-emerald-400/40"
+              >
+                <span>HIRE ME NOW</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+              <a 
+                href="#portfolio" 
+                className="bg-[#0b0f19] text-slate-200 text-xs font-bold uppercase tracking-wider px-7 py-3.5 rounded-full hover:bg-white/10 transition-all flex items-center justify-center gap-2 border border-white/15"
+              >
+                <span>EXPLORE WORK</span>
+              </a>
             </div>
-            <div className="px-4 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-xs text-slate-600 dark:text-slate-400 font-mono font-medium flex items-center gap-2">
-              <Lock className="w-3 h-3 text-emerald-600 dark:text-lime-400" /> https://yulwa.com/dashboard/growth
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-              <span className="text-xs font-bold text-slate-700 dark:text-slate-300 hidden sm:inline">All Systems Operational</span>
+
+            {/* Live Stack Indicators */}
+            <div className="flex flex-wrap items-center gap-2 pt-5 border-t border-white/10 font-mono text-xs text-slate-400">
+              <span className="text-slate-500 font-bold">SKILLS:</span>
+              <span className="px-2.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-indigo-300">Web & React Apps</span>
+              <span className="px-2.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-sky-300">Web Administration</span>
+              <span className="px-2.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-violet-300">Blender 3D & Graphics</span>
+              <span className="px-2.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-emerald-300">Cloud Hosting</span>
             </div>
           </div>
 
-          {/* Metric Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-white/5">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">SEO Organic Traffic</span>
-                <BarChart3 className="w-4 h-4 text-emerald-600 dark:text-lime-400" />
+          {/* Hero Visual Right (5 Cols) - Interactive IDE Terminal Console */}
+          <div ref={terminalRef} className="lg:col-span-5">
+            <div className="tech-card rounded-2xl bg-[#090d16] border border-white/15 shadow-2xl p-5 font-mono text-xs">
+              
+              {/* Window Bar */}
+              <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/10 text-slate-400">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block" />
+                  <span className="ml-1.5 font-bold text-slate-300 text-[11px]">yulwa.ts</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-[10px] text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
+                  <Play className="w-2.5 h-2.5 fill-emerald-400" /> ACTIVE
+                </div>
               </div>
-              <div className="text-2xl font-black text-slate-900 dark:text-white">48,920</div>
-              <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400">+142% vs last month</span>
-            </div>
 
-            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-white/5">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Corporate Mailboxes</span>
-                <Mail className="w-4 h-4 text-teal-600 dark:text-teal-400" />
+              {/* Code Snippet */}
+              <div className="space-y-1.5 text-slate-300 leading-relaxed text-[11px] overflow-x-auto select-none">
+                <div><span className="text-purple-400">const</span> <span className="text-indigo-300">yulwa</span> = &#123;</div>
+                <div className="pl-4"><span className="text-slate-400">architect:</span> <span className="text-emerald-300">'Paljor Dawa'</span>,</div>
+                <div className="pl-4"><span className="text-slate-400">services:</span> [</div>
+                <div className="pl-8 text-amber-300">'Custom Websites & Web Apps'</div>
+                <div className="pl-8 text-amber-300">'NVMe Cloud Server Hosting'</div>
+                <div className="pl-8 text-amber-300">'Business Email (@domain.com)'</div>
+                <div className="pl-8 text-amber-300">'Rank #1 SEO Optimization'</div>
+                <div className="pl-4">]</div>
+                <div>&#125;;</div>
+                <br />
+                <div className="p-2.5 bg-black/60 rounded-lg border border-white/10 font-mono text-[11px]">
+                  <div className="text-emerald-400 font-bold">✓ Web Application Compiled in 0.38s</div>
+                  <div className="text-sky-400">✓ NVMe Cloud Server Active (99.99%)</div>
+                  <div className="text-purple-400">✓ Business Email & SEO Verified</div>
+                </div>
               </div>
-              <div className="text-2xl font-black text-slate-900 dark:text-white">10 Active</div>
-              <span className="text-xs font-bold text-slate-600 dark:text-slate-400">100% SPF/DKIM Verified</span>
-            </div>
 
-            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-white/5">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Page Speed Score</span>
-                <Zap className="w-4 h-4 text-lime-600 dark:text-lime-400" />
-              </div>
-              <div className="text-2xl font-black text-slate-900 dark:text-white">99/100</div>
-              <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400">Sub-400ms load time</span>
-            </div>
-
-            <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-white/5">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">Cloud Uptime</span>
-                <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-              </div>
-              <div className="text-2xl font-black text-slate-900 dark:text-white">99.99%</div>
-              <span className="text-xs font-bold text-slate-600 dark:text-slate-400">NVMe Edge Active</span>
             </div>
           </div>
 
-          {/* Visual Progress Graph Bar */}
-          <div className="p-6 rounded-2xl bg-slate-950 dark:bg-slate-950 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-inner">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 sky-gradient rounded-xl flex items-center justify-center text-black font-black text-xl shadow-lg">
-                Y
-              </div>
-              <div>
-                <h4 className="font-bold text-lg text-white">Yulwa Digital Infrastructure Suite</h4>
-                <p className="text-slate-400 text-xs">Website • Email • SEO • NVMe Cloud</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 w-full md:w-auto">
-              <div className="px-4 py-2 rounded-xl bg-white/10 text-xs font-bold text-lime-400 border border-lime-500/20 flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4" /> SSL Encrypted
-              </div>
-              <div className="px-4 py-2 rounded-xl bg-white/10 text-xs font-bold text-emerald-400 border border-emerald-500/20 flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4" /> SEO Ranked #1
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
   );
 };
+
+
+

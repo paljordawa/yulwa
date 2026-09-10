@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, ChevronRight, Sun, Moon } from 'lucide-react';
+import React, { useState } from 'react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { Logo } from './Logo';
 
 interface HeaderProps {
@@ -8,96 +8,83 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ isScrolled }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(true);
-
-  useEffect(() => {
-    const isDark = document.documentElement.classList.contains('dark');
-    setIsDarkMode(isDark);
-  }, []);
-
-  const toggleTheme = () => {
-    if (isDarkMode) {
-      document.documentElement.classList.remove('dark');
-      localStorage.theme = 'light';
-      setIsDarkMode(false);
-    } else {
-      document.documentElement.classList.add('dark');
-      localStorage.theme = 'dark';
-      setIsDarkMode(true);
-    }
-  };
 
   const navLinks = [
     { name: 'Services', href: '#services' },
+    { name: 'Portfolio', href: '#portfolio' },
     { name: 'Features', href: '#features' },
     { name: 'Pricing', href: '#pricing' },
     { name: 'About', href: '#about' },
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-white/80 dark:bg-slate-950/80 backdrop-blur-lg border-b border-slate-200 dark:border-white/10 py-3' 
-        : 'bg-transparent py-6'
-    }`}>
-      <div className="container mx-auto px-6 flex items-center justify-between">
+    <header className="fixed top-4 left-0 right-0 z-50 px-4 md:px-8 transition-all duration-300">
+      <div className={`max-w-6xl mx-auto rounded-full px-6 py-3 transition-all duration-300 flex items-center justify-between backdrop-blur-xl border border-white/10 ${
+        isScrolled 
+          ? 'bg-[#030712]/85 shadow-2xl shadow-black/80 border-emerald-500/25' 
+          : 'bg-[#090d16]/75 shadow-xl border-white/10'
+      }`}>
+        
+        {/* Simple Brand Logo */}
         <a href="/" className="flex items-center group">
-          <Logo className="h-8 md:h-10 w-auto transition-transform group-hover:scale-105" />
+          <Logo className="h-7 w-auto transition-transform group-hover:scale-105" />
         </a>
 
-        {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        {/* Simple Centered Floating Nav Links */}
+        <nav className="hidden md:flex items-center gap-7">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-sm font-semibold text-slate-800 dark:text-slate-200 hover:text-emerald-600 dark:hover:text-lime-400 transition-colors"
+              className="text-xs font-medium text-slate-300 hover:text-white transition-colors tracking-wide"
             >
               {link.name}
             </a>
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-4">
-          <button 
-            onClick={toggleTheme}
-            className="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10 transition-all border border-slate-200 dark:border-white/10"
-            aria-label="Toggle Theme"
+        {/* Compact CTA */}
+        <div className="hidden md:flex items-center">
+          <a 
+            href="#contact"
+            className="tech-bg-gradient text-white px-5 py-2 rounded-full text-xs font-bold tracking-wide flex items-center gap-1.5 hover:opacity-90 transition-all shadow-md shadow-emerald-500/20 hover:scale-[1.02] active:scale-95 border border-emerald-400/30 whitespace-nowrap"
           >
-            {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-          </button>
+            <span>Hire Me</span>
+            <ArrowUpRight className="w-3.5 h-3.5 shrink-0" />
+          </a>
         </div>
 
         {/* Mobile Toggle */}
-        <div className="flex items-center gap-4 md:hidden">
+        <div className="flex items-center md:hidden">
           <button 
-            onClick={toggleTheme}
-            className="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300"
-          >
-            {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-          </button>
-          <button 
-            className="text-slate-900 dark:text-white"
+            className="text-white p-1.5 focus:outline-none"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X /> : <Menu />}
+            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-white/10 p-6 flex flex-col gap-4 animate-in slide-in-from-top duration-300 shadow-xl">
+        <div className="md:hidden mt-2 max-w-6xl mx-auto bg-[#030712]/95 backdrop-blur-2xl rounded-2xl border border-indigo-500/20 p-5 flex flex-col gap-3 shadow-2xl">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-lg font-medium text-slate-600 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-lime-400"
+              className="text-sm font-medium text-slate-300 hover:text-white py-1"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.name}
             </a>
           ))}
+          <a 
+            href="#contact"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="tech-bg-gradient text-white py-2.5 rounded-full text-xs font-bold text-center mt-2 shadow-lg shadow-indigo-500/25 border border-indigo-400/40"
+          >
+            Get Quote
+          </a>
         </div>
       )}
     </header>
