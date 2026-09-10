@@ -129,7 +129,7 @@ export const About: React.FC = () => {
                 Meet <span className="tech-gradient-text">Paljor Dawa</span>
               </h3>
               <p className="text-slate-300 text-sm leading-relaxed mb-6 font-normal">
-                Developer, 3D Artist & Founder of Yulwa Digital. Specialized in building React web applications, Blender 3D concept art, brand visual design, business email setups, and technical SEO.
+                Full-stack developer, 3D artist & founder of Yulwa Digital. Specializing in high-performance React & Next.js web application engineering, NVMe cloud server hosting, business email authentication, and technical SEO across Bhutan, India, and worldwide.
               </p>
               <div className="flex gap-3 mb-6">
                 {socials.map((social, idx) => (

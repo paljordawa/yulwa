@@ -132,6 +132,7 @@ export const Hero: React.FC = () => {
               <span className="px-2.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-sky-300">Web Administration</span>
               <span className="px-2.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-violet-300">Blender 3D & Graphics</span>
               <span className="px-2.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-emerald-300">Cloud Hosting</span>
+              <span className="px-2.5 py-0.5 rounded-md bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 font-bold">🇧🇹 Bhutan • 🇮🇳 India • Global</span>
             </div>
           </div>
 
@@ -156,6 +157,7 @@ export const Hero: React.FC = () => {
               <div className="space-y-1.5 text-slate-300 leading-relaxed text-[11px] overflow-x-auto select-none">
                 <div><span className="text-purple-400">const</span> <span className="text-indigo-300">yulwa</span> = &#123;</div>
                 <div className="pl-4"><span className="text-slate-400">architect:</span> <span className="text-emerald-300">'Paljor Dawa'</span>,</div>
+                <div className="pl-4"><span className="text-slate-400">regions:</span> [<span className="text-emerald-300">'Bhutan'</span>, <span className="text-emerald-300">'India'</span>, <span className="text-emerald-300">'Global'</span>],</div>
                 <div className="pl-4"><span className="text-slate-400">services:</span> [</div>
                 <div className="pl-8 text-amber-300">'Custom Websites & Web Apps'</div>
                 <div className="pl-8 text-amber-300">'NVMe Cloud Server Hosting'</div>
@@ -166,8 +168,8 @@ export const Hero: React.FC = () => {
                 <br />
                 <div className="p-2.5 bg-black/60 rounded-lg border border-white/10 font-mono text-[11px]">
                   <div className="text-emerald-400 font-bold">✓ Web Application Compiled in 0.38s</div>
-                  <div className="text-sky-400">✓ NVMe Cloud Server Active (99.99%)</div>
-                  <div className="text-purple-400">✓ Business Email & SEO Verified</div>
+                  <div className="text-sky-400">✓ Bhutan & Global Edge Cloud (99.99%)</div>
+                  <div className="text-purple-400">✓ Business Email & 5-Star SEO Verified</div>
                 </div>
               </div>
 

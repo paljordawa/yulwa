@@ -22,8 +22,11 @@ export const Footer: React.FC = () => {
                 <Logo className="h-10 w-auto" />
               </div>
               <p className="text-slate-400 max-w-sm leading-relaxed text-sm font-medium">
-                High-tech developer agency specializing in React/Next.js web applications, corporate business email setup, Page #1 SEO optimization, and NVMe cloud hosting.
+                High-tech developer agency specializing in React/Next.js web applications, corporate business email setup, Page #1 SEO optimization, and NVMe cloud hosting for businesses in Bhutan, India, and worldwide.
               </p>
+              <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-950/50 border border-indigo-500/20 text-indigo-300 text-xs font-mono">
+                <span>🇧🇹 Bhutan • 🇮🇳 India • Global</span>
+              </div>
             </div>
             <div className="flex flex-wrap gap-3">
               {socialLinks.map((social, idx) => (
