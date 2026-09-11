@@ -1,9 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Main Homepage & Platform Root -->
   <url>
     <loc>https://yulwa.com/</loc>
-    <lastmod>2026-09-10</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    
+    <!-- Geo-Targeting & Hreflang Localization -->
+    <xhtml:link rel="alternate" hreflang="en-BT" href="https://yulwa.com/" />
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://yulwa.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://yulwa.com/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yulwa.com/" />
+
+    <!-- Google Image Indexing for Portfolio & 3D Renders -->
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/paljordawa/3dfolio/main/public/screenshot/yumbu%20lhakhang.png</image:loc>
+      <image:title>Yumbu Lhakhang 3D Architectural Model Render by Paljor Dawa</image:title>
+      <image:caption>Photorealistic 3D environment render of ancient Tibetan fortress Yumbu Lhakhang created in Blender 3D by Yulwa.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/paljordawa/3dfolio/main/public/screenshot/patra.png</image:loc>
+      <image:title>Tibetan Stupa 3D Environment Render</image:title>
+      <image:caption>3D architectural concept render of traditional Tibetan Stupa with ornate motifs created by Yulwa Digital.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/paljordawa/3dfolio/main/public/screenshot/village-house.jpg</image:loc>
+      <image:title>Traditional Himalayan Village House 3D Model Render</image:title>
+      <image:caption>3D architectural environment render of traditional Himalayan timber and stone village house by Paljor Dawa.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&amp;fit=crop&amp;w=1200&amp;q=80</image:loc>
+      <image:title>Yulwa Web Application Development &amp; Cloud Platform</image:title>
+      <image:caption>High-performance web development, WordPress website recovery, and cloud hosting in Bhutan, India, and worldwide.</image:caption>
+    </image:image>
   </url>
+
+  <!-- Digital Services Section -->
+  <url>
+    <loc>https://yulwa.com/#services</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Selected Portfolio Works & 3D Renders -->
+  <url>
+    <loc>https://yulwa.com/#portfolio</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Technical Features & Security Stack -->
+  <url>
+    <loc>https://yulwa.com/#features</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Web Administration & Hosting Pricing Plans -->
+  <url>
+    <loc>https://yulwa.com/#pricing</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- About Paljor Dawa & Agency Profile -->
+  <url>
+    <loc>https://yulwa.com/#about</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Consultation & Proposal Terminal -->
+  <url>
+    <loc>https://yulwa.com/#contact</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
 </urlset>
