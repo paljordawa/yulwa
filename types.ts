@@ -38,4 +38,6 @@ export interface ProjectProps {
   tags: string[];
   metrics: string;
   link: string;
+  platformLogos?: { name: string; url: string }[];
+  glbModel?: string;
 }

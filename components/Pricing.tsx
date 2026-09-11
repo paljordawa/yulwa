@@ -151,7 +151,7 @@ export const Pricing: React.FC = () => {
         <TibetanCloud variant="cluster" className="w-80 h-80 text-emerald-500" />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6 relative z-10 max-w-6xl">
         {/* Section Header */}
         <div className="text-center max-w-xl mx-auto mb-12 relative">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-300 text-xs font-mono font-medium tracking-wide mb-3">
@@ -264,7 +264,7 @@ export const Pricing: React.FC = () => {
               >
                 <div>
                   <div className="flex items-center justify-between mb-3">
-                    <div className="p-2 rounded-lg bg-emerald-950/60 border border-emerald-500/30">
+                    <div>
                       {service.icon}
                     </div>
                     <span className="text-xs font-mono font-bold text-emerald-400">{service.price}</span>

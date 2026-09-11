@@ -39,12 +39,9 @@ export const Testimonials: React.FC = () => {
 
   return (
     <section ref={containerRef} className="py-28 bg-[#030712] relative overflow-hidden border-b border-indigo-500/10">
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6 relative z-10 max-w-6xl">
         <div className="text-center mb-16 max-w-2xl mx-auto border-b border-indigo-500/20 pb-8">
-          <div className="text-xs font-mono font-bold text-indigo-400 uppercase tracking-widest mb-3 flex items-center justify-center gap-2">
-            <Terminal className="w-4 h-4 text-cyan-400" />
-            [ 06 // CLIENT AUDITS & REVIEWS ]
-          </div>
+
           <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight mb-4">Trusted by Industry Pioneers</h2>
           <p className="text-slate-300 font-mono text-xs uppercase tracking-wider text-indigo-400">
             "Yulwa (Sky) — Engineering robust technical foundations for modern digital ventures."
@@ -53,8 +50,8 @@ export const Testimonials: React.FC = () => {
 
         <div className="grid md:grid-cols-3 gap-8">
           {testimonials.map((t, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className="testimonial-card tech-card p-8 rounded-3xl bg-[#0b0f19]/80 border border-indigo-500/20 relative hover:-translate-y-2 transition-all duration-300 shadow-2xl flex flex-col justify-between"
             >
               <div>
@@ -64,7 +61,6 @@ export const Testimonials: React.FC = () => {
                       <Star key={i} className="w-3.5 h-3.5 fill-indigo-400 text-indigo-400" />
                     ))}
                   </div>
-                  <span className="font-mono text-[10px] text-cyan-400 font-bold">[ VERIFIED 0{idx + 1} ]</span>
                 </div>
                 <p className="text-slate-300 text-sm leading-relaxed mb-8 font-medium">"{t.content}"</p>
               </div>

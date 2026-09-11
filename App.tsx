@@ -30,7 +30,7 @@ const App: React.FC = () => {
       <div className="fixed bottom-0 right-0 w-[550px] h-[550px] bg-indigo-600/10 blur-[150px] pointer-events-none -z-10 rounded-full" />
 
       <Header isScrolled={isScrolled} />
-      
+
       <main>
         <Hero />
         <Stats />

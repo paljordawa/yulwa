@@ -82,7 +82,7 @@ export const Hero: React.FC = () => {
         <TibetanCloud variant="hero" className="w-full h-auto text-emerald-400" />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6 relative z-10 max-w-7xl">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
           
           {/* Hero Content Left (7 Cols) */}
@@ -129,6 +129,7 @@ export const Hero: React.FC = () => {
             <div className="flex flex-wrap items-center gap-2 pt-5 border-t border-white/10 font-mono text-xs text-slate-400">
               <span className="text-slate-500 font-bold">SKILLS:</span>
               <span className="px-2.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-indigo-300">Web & React Apps</span>
+              <span className="px-2.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-rose-300 font-medium">WordPress Recovery</span>
               <span className="px-2.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-sky-300">Web Administration</span>
               <span className="px-2.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-violet-300">Blender 3D & Graphics</span>
               <span className="px-2.5 py-0.5 rounded-md bg-white/5 border border-white/10 text-emerald-300">Cloud Hosting</span>
@@ -160,6 +161,7 @@ export const Hero: React.FC = () => {
                 <div className="pl-4"><span className="text-slate-400">regions:</span> [<span className="text-emerald-300">'Bhutan'</span>, <span className="text-emerald-300">'India'</span>, <span className="text-emerald-300">'Global'</span>],</div>
                 <div className="pl-4"><span className="text-slate-400">services:</span> [</div>
                 <div className="pl-8 text-amber-300">'Custom Websites & Web Apps'</div>
+                <div className="pl-8 text-rose-300">'WordPress Recovery & Malware Removal'</div>
                 <div className="pl-8 text-amber-300">'NVMe Cloud Server Hosting'</div>
                 <div className="pl-8 text-amber-300">'Business Email (@domain.com)'</div>
                 <div className="pl-8 text-amber-300">'Rank #1 SEO Optimization'</div>
@@ -168,6 +170,7 @@ export const Hero: React.FC = () => {
                 <br />
                 <div className="p-2.5 bg-black/60 rounded-lg border border-white/10 font-mono text-[11px]">
                   <div className="text-emerald-400 font-bold">✓ Web Application Compiled in 0.38s</div>
+                  <div className="text-rose-400 font-bold">✓ Emergency WordPress Recovery Active</div>
                   <div className="text-sky-400">✓ Bhutan & Global Edge Cloud (99.99%)</div>
                   <div className="text-purple-400">✓ Business Email & 5-Star SEO Verified</div>
                 </div>

@@ -49,8 +49,8 @@ export const AIArchitect: React.FC = () => {
           {/* Header */}
           <div className="sky-gradient p-5 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-black/20 rounded-xl flex items-center justify-center">
-                <Cpu className="text-black w-6 h-6" />
+              <div className="text-black">
+                <Cpu className="w-6 h-6" />
               </div>
               <div>
                 <h4 className="text-black font-bold leading-none">Digital Services Advisor</h4>

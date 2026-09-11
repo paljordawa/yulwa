@@ -36,8 +36,8 @@ export const ContactCTA: React.FC = () => {
         method: 'POST',
         body: formData,
         mode: 'no-cors'
-      }).catch(() => {});
-    } catch (err) {}
+      }).catch(() => { });
+    } catch (err) { }
 
     setTimeout(() => {
       setSubmitted(true);
@@ -49,8 +49,8 @@ export const ContactCTA: React.FC = () => {
       {/* Hidden iframe for target submission */}
       <iframe name="mailchimp-hidden-iframe" id="mailchimp-hidden-iframe" style={{ display: 'none' }} />
 
-      <div className="container mx-auto px-6">
-        <div 
+      <div className="container mx-auto px-6 max-w-6xl">
+        <div
           className="cta-container tech-bg-gradient rounded-3xl p-8 sm:p-14 md:p-16 relative overflow-hidden shadow-2xl shadow-indigo-950/80 border border-indigo-500/30"
         >
           {/* Tibetan Cloud SVG Banner Backdrop Watermark */}
@@ -64,12 +64,10 @@ export const ContactCTA: React.FC = () => {
           {/* Background glowing shapes */}
           <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/30 blur-[100px] rounded-full -mr-48 -mt-48 pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-cyan-500/20 blur-[90px] rounded-full -ml-32 -mb-32 pointer-events-none" />
-          
+
           <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
             <div className="max-w-xl text-center lg:text-left relative">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-black/40 border border-indigo-400/30 text-white text-xs font-mono font-bold uppercase tracking-wider mb-6 backdrop-blur-md">
-                <Sparkles className="w-3.5 h-3.5 text-cyan-300" /> [ 07 // TECHNICAL CONSULTATION ]
-              </div>
+
               <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-[1.08] mb-6 tracking-tight">
                 Ready to engineer your digital dominance?
               </h2>
@@ -77,10 +75,10 @@ export const ContactCTA: React.FC = () => {
                 Connect with our tech architect for custom web apps, corporate email setup, search engine optimization, and dedicated cloud hosting.
               </p>
             </div>
-            
+
             <div className="w-full lg:w-auto min-w-[320px] sm:min-w-[420px]">
               {!submitted ? (
-                <form 
+                <form
                   action={MAILCHIMP_ACTION_URL}
                   method="POST"
                   target="mailchimp-hidden-iframe"
@@ -88,10 +86,7 @@ export const ContactCTA: React.FC = () => {
                   className="bg-[#0b0f19]/95 backdrop-blur-2xl p-6 sm:p-8 rounded-2xl border border-indigo-500/30 shadow-2xl flex flex-col gap-4"
                 >
                   <div className="border-b border-indigo-500/20 pb-3">
-                    <div className="text-[10px] font-mono text-cyan-400 font-bold mb-1 flex items-center gap-1.5">
-                      <Terminal className="w-3.5 h-3.5 text-indigo-400" />
-                      INQUIRY CONSOLE
-                    </div>
+
                     <h3 className="text-xl font-black text-white tracking-tight">Request Architectural Audit & Proposal</h3>
                   </div>
 
@@ -100,7 +95,7 @@ export const ContactCTA: React.FC = () => {
                       <label className="text-xs font-mono font-bold text-slate-300 mb-1.5 block">YOUR EMAIL ADDRESS</label>
                       <div className="relative">
                         <Mail className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
-                        <input 
+                        <input
                           type="email"
                           name="EMAIL"
                           id="mce-EMAIL"
@@ -115,7 +110,7 @@ export const ContactCTA: React.FC = () => {
 
                     <div>
                       <label className="text-xs font-mono font-bold text-slate-300 mb-1.5 block">SERVICE MODULE</label>
-                      <select 
+                      <select
                         name="SERVICE"
                         value={service}
                         onChange={(e) => setService(e.target.value)}
@@ -135,29 +130,24 @@ export const ContactCTA: React.FC = () => {
                     </div>
                   </div>
 
-                  <button 
+                  <button
                     type="submit"
                     className="w-full tech-bg-gradient text-white py-4 rounded-xl font-mono text-xs font-bold uppercase tracking-widest transition-all shadow-xl flex items-center justify-center gap-2 group mt-2 active:scale-95 border border-indigo-400/40"
                   >
-                    <span>SUBMIT CONSULTATION REQUEST</span>
+                    <span>SUBMIT</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
-
-                  <div className="flex items-center justify-center gap-2 text-[11px] font-mono text-slate-400 pt-1">
-                    <Lock className="w-3 h-3 text-cyan-400" />
-                    <span>No spam. Guaranteed response within 12 hours.</span>
-                  </div>
                 </form>
               ) : (
                 <div className="bg-[#0b0f19]/95 backdrop-blur-xl p-8 sm:p-10 rounded-2xl border border-indigo-500/30 shadow-2xl text-center">
-                  <div className="w-16 h-16 bg-indigo-500/20 text-cyan-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-indigo-400/30">
-                    <CheckCircle2 className="w-10 h-10" />
+                  <div className="text-emerald-400 mb-4 flex items-center justify-center">
+                    <CheckCircle2 className="w-12 h-12" />
                   </div>
                   <h3 className="text-2xl font-black text-white mb-2">Request Transmitted!</h3>
                   <p className="text-slate-300 text-sm leading-relaxed mb-6">
                     Thank you! We've registered your consultation request for <strong>{service}</strong>. Paljor Dawa will review your inquiry and email <strong>{email}</strong> promptly.
                   </p>
-                  <button 
+                  <button
                     onClick={() => setSubmitted(false)}
                     className="px-6 py-2.5 rounded-xl bg-white/10 text-xs font-mono font-bold text-white hover:bg-white/20 transition-all border border-white/15"
                   >
@@ -171,4 +161,4 @@ export const ContactCTA: React.FC = () => {
       </div>
     </section>
   );
-};
+};
